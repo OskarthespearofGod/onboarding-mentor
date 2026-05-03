@@ -4,6 +4,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.ui.components.JBScrollPane;
 
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Map;
@@ -46,14 +49,10 @@ public class MentorToolWindow {
     }
 
     public void display(String markdown) {
-        // Basic conversion for ## sections
-        String html = markdown
-                .replaceAll("(?m)^## (.*?)$", "<h2>$1</h2>")
-                .replaceAll("(?m)^### (.*?)$", "<h3>$1</h3>")
-                // bold
-                .replaceAll("\\*\\*(.*?)\\*\\*", "<b>$1</b>")
-                // basic newlines
-                .replaceAll("\n", "<br/>");
+        Parser parser = Parser.builder().build();
+        org.commonmark.node.Node document = parser.parse(markdown);
+        HtmlRenderer renderer = HtmlRenderer.builder().build();
+        String html = renderer.render(document);
 
         SwingUtilities.invokeLater(() -> {
             editorPane.setText("<html><body style='font-family: sans-serif; padding: 10px;'>" + html + "</body></html>");

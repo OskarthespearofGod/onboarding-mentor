@@ -15,7 +15,7 @@
                                  id="com.onboardingmentor.settings.MentorSettingsConfigurable"
                                  displayName="Onboarding Mentor"/>
         
-        <toolWindow id="Onboarding Mentor" anchor="right" icon="AllIcons.Toolwindows.ToolWindow"
+        <toolWindow id="Onboarding Mentor" anchor="right"
                     factoryClass="com.onboardingmentor.ui.MentorToolWindowFactory"/>
     </extensions>
 

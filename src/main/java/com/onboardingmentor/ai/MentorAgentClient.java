@@ -51,7 +51,7 @@ public class MentorAgentClient {
             requestBody.addProperty("max_tokens", 2048);
             requestBody.addProperty("system", "You are an onboarding mentor helping a new engineer understand a codebase.\n" +
                     "Analyze the given class. Use tools to look up related classes if needed (max 3 tool calls).\n" +
-                    "Respond with exactly these sections:\n" +
+                    "Respond using standard Markdown formatting. Use exactly these headings:\n" +
                     "## What this class does\n" +
                     "## Data flow (inputs and outputs)\n" +
                     "## Key collaborators\n" +

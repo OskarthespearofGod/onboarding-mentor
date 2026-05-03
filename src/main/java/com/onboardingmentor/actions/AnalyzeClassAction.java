@@ -25,7 +25,14 @@ import com.onboardingmentor.settings.MentorSettings;
 import com.onboardingmentor.ui.MentorToolWindow;
 import org.jetbrains.annotations.NotNull;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
+
 public class AnalyzeClassAction extends AnAction {
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
+    }
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
